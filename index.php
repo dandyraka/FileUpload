@@ -62,23 +62,32 @@
             <ul class="nav navbar-nav navbar-right">
 			  <li class="active"><a href="index.php">Home</a></li>
 			  <li><a href="upload.php">upload</a></li>
+			  <li><a href="transaksi.php">transaksi</a></li>
             </ul>
           </div>
         </div>
       </div>
-      <h1>Data Sapi</h1>
-	<a href="form_simpan.php">Tambah Data</a><br><br>
-	<table border="1" width="100%">
+      
+
+      <div class="jumbotron">
+		<center>
+		<h2>Sistem Informasi Sapi Perah</h2>
+		<h4>Data Sapi</h4>
+		</center>
+
+	<a href="form_simpan.php"><button type="button" class="btn btn-primary">Tambah Data</button></a><br><br>
+	<div class="table-responsive">
+	<table class="table table-striped">
 	<tr>
-		
 		<th>ID SAPI</th>
 		<th>ID KANDANG</th>
 		<th>TGL LAHIR</th>
 		<th>UMR SAPI</th>
 		<th>JNS KELAMIN</th>
 		<th>BRT SAPI</th>
-		<th>JNS SAPI</>
-		<th colspan="2">Aksi</th>
+		<th>JNS SAPI</th>
+		<th>KUOTA KANDANG</th>
+		<th>Aksi</th>
 	</tr>
 	<?php
 	// Load file koneksi.php
@@ -87,27 +96,29 @@
 	$query = "SELECT * FROM sapi"; // Query untuk menampilkan semua data siswa
 	$sql = mysqli_query($connect, $query); // Eksekusi/Jalankan query dari variabel $query
 	
+	
+	
 	while($data = mysqli_fetch_array($sql)){ // Ambil semua data dari hasil eksekusi $sql
+		//kandang
+		$query1 = "SELECT KAPSTS_KANDANG FROM kandang where ID_KANDANG ='".$data['ID_KANDANG']."'"; // Query untuk menampilkan semua data siswa
+		$sql1 = mysqli_query($connect, $query1); // Eksekusi/Jalankan query dari variabel $query
+		$datax = mysqli_fetch_array($sql1);
+	
 		echo "<tr>";
-		
-		echo "<td>".$data['ID_SAPI']."</td>";
-		echo "<td>".$data['ID_KANDANG']."</td>";
-		echo "<td>".$data['TGL_LAHIR']."</td>";
-		echo "<td>".$data['UMR_SAPI']."</td>";
-		echo "<td>".$data['JNS_KELAMIN']."</td>";
-		echo "<td>".$data['BRT_SAPI']."</td>";
-		echo "<td>".$data['JNS_SAPI']."</td>";
-		echo "<td><a href='form_ubah.php?ID_SAPI=".$data['ID_SAPI']."'>Ubah</a></td>";
-		echo "<td><a href='proses_hapus.php?ID_SAPI=".$data['ID_SAPI']."'>Hapus</a></td>";
+		echo "<td><center>".$data['ID_SAPI']."</center></td>";
+		echo "<td><center>".$data['ID_KANDANG']."</center></td>";
+		echo "<td><center>".$data['TGL_LAHIR']."</center></td>";
+		echo "<td><center>".$data['UMR_SAPI']."</center></td>";
+		echo "<td><center>".$data['JNS_KELAMIN']."</center></td>";
+		echo "<td><center>".$data['BRT_SAPI']."</center></td>";
+		echo "<td><center>".$data['JNS_SAPI']."</center></td>";
+		echo "<td><center>".$datax['KAPSTS_KANDANG']."</center></td>";
+		echo "<td><a href='form_ubah.php?ID_SAPI=".$data['ID_SAPI']."'><button type='button' class='btn btn-info'>Ubah</button></a> <a href='proses_hapus.php?ID_SAPI=".$data['ID_SAPI']."&ID_KANDANG=".$data['ID_KANDANG']."'><button type='button' class='btn btn-danger'>Hapus</button></a></td>";
 		echo "</tr>";
 	}
 	?>
 	</table>
-
-      <div class="jumbotron">
-		<center>
-		<font size="3"><b>sistem informasi sapi perah</b></font>
-		</center>
+	</div>
       </div>
 
     </div>

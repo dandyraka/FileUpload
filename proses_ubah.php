@@ -24,7 +24,7 @@ $JNS_SAPI = $_POST['JNS_SAPI'];
 		
 		// Proses ubah data ke Database
 		//UPDATE `sapi` SET `UMR_SAPI` = '15' WHERE `sapi`.`ID_SAPI` = '001'
-		$query = "UPDATE `sapi` SET `ID_KANDANG` = '".$ID_KANDANG."', `TGL_LAHIR` = '".$TGL_LAHIR."', `UMR_SAPI` = '".$UMR_SAPI."', `JNS_KELAMIN` = '".$JNS_KELAMIN."', `BRT_SAPI` = '".$BRT_SAPI."', `JNS_SAPI` = '".$JNS_SAPI."' WHERE `sapi`.`ID_SAPI` = '".$IDSAPI."'";
+		$query = "UPDATE `sapi` SET `ID_KANDANG` = '".$ID_KANDANG."', `BRT_SAPI` = '".$BRT_SAPI."' WHERE `sapi`.`ID_SAPI` = '".$IDSAPI."'";
 		//$query = "UPDATE sapi SET ID_KANDANG='".$ID_KANDANG."', TGL_LAHIR='".$TGL_LAHIR."', UMR_SAPI='".$UMR_SAPI."', JNS_KELAMIN='".$JNS_KELAMIN."', BRT_SAPI='".$BRT_SAPI."', JNS_SAPI='".$JNS_SAPI."', WHERE `sapi`.`ID_SAPI` ='".$IDSAPI."'";
 		$sql = mysqli_query($connect, $query); // Eksekusi/ Jalankan query dari variabel $query
 		

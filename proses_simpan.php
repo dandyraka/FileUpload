@@ -20,6 +20,8 @@ $JNS_SAPI = $_POST['JNS_SAPI'];
 	if($sql){ // Cek jika proses simpan ke database sukses atau tidak
 		// Jika Sukses, Lakukan :
 		header("location: index.php"); // Redirect ke halaman index.php
+		$query2 = "update kandang set KAPSTS_KANDANG = KAPSTS_KANDANG-1 where ID_KANDANG = '".$ID_KANDANG."'";
+		$sql2 = mysqli_query($connect, $query2);
 	}else{
 		// Jika Gagal, Lakukan :
 		//echo "Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data ke database.";
