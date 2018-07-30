@@ -1,2 +1,6 @@
-# -Tugas-UAS-Upload-File
-[Tugas UAS]CRUD, Upload, Akses &amp; Hapus File
+# FileUpload
+[Tugas UAS]
+- CRUD
+- File Upload
+- Edit File (txt only)
+- Delete File
